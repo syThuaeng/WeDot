@@ -38,7 +38,14 @@ flowchart LR
 
 ### 1. 获取源码
 
-下载本仓库的 ZIP 并解压，或者克隆仓库。在 PowerShell 中进入包含 `install.ps1` 的项目根目录。
+已安装 Git 的用户，可以在 PowerShell 中运行以下命令下载源码并进入项目目录：
+
+```powershell
+git clone https://github.com/syThuaeng/WeDot.git
+cd WeDot
+```
+
+也可以下载本仓库的 ZIP 并解压，再在 PowerShell 中进入包含 `install.ps1` 的项目根目录。进入目录后，继续执行下面的安装步骤。
 
 仓库自带 `dist/cli.js`，普通使用无需先安装 npm 依赖。如果下载的源码不含该文件，在项目目录依次运行 `npm ci` 和 `npm run build`，然后再安装。
 
@@ -128,7 +135,7 @@ flowchart LR
 
 ## 更新与卸载
 
-更新前先让 Codex 停止 WeDot。获取新代码，确认构建产物存在，再运行 `install.ps1`。在新的 Codex 对话中检查连接并启动。
+更新前先让 Codex 停止 WeDot。通过 Git 克隆的用户可在项目目录运行 `git pull` 获取最新源码；通过 ZIP 下载的用户则重新下载并解压。确认构建产物存在，再运行 `install.ps1`。在新的 Codex 对话中检查连接并启动。
 
 卸载前同样先停止转发，然后运行：
 
