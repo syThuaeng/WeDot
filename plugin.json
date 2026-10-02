@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wedot",
+  "version": "1.0.0",
+  "description": "微信扫码连接现有 Codex Dot，双向转发文字消息。",
+  "author": {
+    "name": "Local workspace"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "WeDot",
+        "shortDescription": "在微信和你的 Dot 之间对话",
+        "longDescription": "扫码绑定本人微信，将消息转交现有 Dot，并同步其发往 ChatGPT 的新增文字回复。",
+        "developerName": "Local workspace",
+        "category": "Productivity",
+        "defaultPrompt": "帮我将 WeDot 连接到我的 Dot，并同步微信文字对话。",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}
