@@ -13,7 +13,7 @@ write('plugin.json', plugin);
 // The portable manifest owns plugin metadata; generate the compatibility overlay.
 fs.mkdirSync(path.join(root, '.codex-plugin'), { recursive: true });
 write('.codex-plugin/plugin.json', {
-  name: plugin.name, version: plugin.version, description: plugin.description,
+  name: plugin.name, version: plugin.version, description: plugin.description, author: plugin.author,
   skills: './skills/', interface: plugin.extensions['com.openai'].interface,
 });
 await build({

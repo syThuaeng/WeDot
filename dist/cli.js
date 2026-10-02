@@ -4671,7 +4671,7 @@ import { setTimeout as delay } from "node:timers/promises";
 // package.json
 var package_default = {
   name: "wedot",
-  version: "1.0.0",
+  version: "1.0.1",
   private: true,
   type: "module",
   engines: {

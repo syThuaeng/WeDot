@@ -36,7 +36,26 @@ flowchart LR
 
 ## 安装教程
 
-### 1. 获取源码
+### 1. 安装插件
+
+**方式一：添加 GitHub 插件市场（推荐）**
+
+已安装 Git 和 Codex CLI 的用户，可以在 PowerShell 中运行：
+
+```powershell
+codex plugin marketplace add syThuaeng/WeDot --ref main
+codex plugin add wedot@wedot
+```
+
+这会添加本项目的 `WeDot` 仓库市场并安装插件，无需手动克隆仓库或运行 `install.ps1`。之后可在 Codex 插件列表中找到 WeDot。
+
+如果 PowerShell 提示找不到 `codex`，可以直接在 Codex 对话中说：
+
+> 把 https://github.com/syThuaeng/WeDot 添加为插件市场，并安装 wedot@wedot。
+
+已经通过 `install.ps1` 安装过的用户，先让 Codex 停止 WeDot，再运行 `codex plugin remove wedot@wedot-local`，然后按上面的命令安装仓库市场版。两种方式使用同一份本地运行数据，已有微信绑定和 Dot 配置会保留。
+
+**方式二：下载源码后手动安装**
 
 已安装 Git 的用户，可以在 PowerShell 中运行以下命令下载源码并进入项目目录：
 
@@ -45,11 +64,9 @@ git clone https://github.com/syThuaeng/WeDot.git
 cd WeDot
 ```
 
-也可以下载本仓库的 ZIP 并解压，再在 PowerShell 中进入包含 `install.ps1` 的项目根目录。进入目录后，继续执行下面的安装步骤。
+也可以下载本仓库的 ZIP 并解压，再在 PowerShell 中进入包含 `install.ps1` 的项目根目录。
 
 仓库自带 `dist/cli.js`，普通使用无需先安装 npm 依赖。如果下载的源码不含该文件，在项目目录依次运行 `npm ci` 和 `npm run build`，然后再安装。
-
-### 2. 安装插件
 
 在项目根目录运行：
 
@@ -67,7 +84,7 @@ cd WeDot
 
 安装完成后，在 Codex 桌面应用中新开一个对话，让新对话加载插件技能。
 
-### 3. 连接你的 Dot
+### 2. 连接你的 Dot
 
 在 Codex 对话中输入：
 
@@ -77,7 +94,7 @@ cd WeDot
 
 如果已经有一个桥接进程正在运行，先让 Codex 停止 WeDot，再连接目标 Dot。
 
-### 4. 扫码并开始聊天
+### 3. 扫码并开始聊天
 
 1. 用微信扫描 Codex 显示的二维码，在手机上确认登录。
 2. 回到 Codex 告知“已扫码”，让它检查绑定并启动 WeDot。
@@ -135,12 +152,23 @@ cd WeDot
 
 ## 更新与卸载
 
-更新前先让 Codex 停止 WeDot。通过 Git 克隆的用户可在项目目录运行 `git pull` 获取最新源码；通过 ZIP 下载的用户则重新下载并解压。确认构建产物存在，再运行 `install.ps1`。在新的 Codex 对话中检查连接并启动。
+更新前先让 Codex 停止 WeDot。
+
+通过仓库市场安装的用户，运行：
+
+```powershell
+codex plugin marketplace upgrade wedot
+codex plugin add wedot@wedot
+```
+
+通过源码手动安装的用户，在项目目录运行 `git pull` 获取最新源码；通过 ZIP 下载的用户则重新下载并解压。确认构建产物存在，再运行 `install.ps1`。更新完成后，在新的 Codex 对话中检查连接并启动。
 
 卸载前同样先停止转发，然后运行：
 
 ```powershell
-codex plugin remove wedot@wedot-local
+codex plugin remove wedot@wedot
 ```
+
+如果使用的是源码手动安装版，卸载命令为 `codex plugin remove wedot@wedot-local`。不再需要仓库市场时，可以运行 `codex plugin marketplace remove wedot` 移除来源。
 
 运行数据独立保存，卸载插件不会自动退出微信登录。如需删除本地凭证，应先执行 `logout` 再卸载。
